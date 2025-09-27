@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
-import type { Product } from "../models/product";
-import Catalog from "../features/catalog/Catalog";
 import { Container } from "@mui/material";
 import NavBar from "./NavBar";
-
-
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch('https://localhost:5001/api/products')
-      .then(res => res.json())
-      .then(data => setProducts(data))
-  }, [])
-
-
-
+ 
   return (
 
     <>
       <NavBar />
       <Container maxWidth="xl" sx={{mt: 8}}>
-        <Catalog products={products} />
+        <Outlet />
       </Container>
     </>
 
